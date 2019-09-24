@@ -7,7 +7,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 
 import com.kbeanie.multipicker.api.callbacks.ContactPickerCallback;

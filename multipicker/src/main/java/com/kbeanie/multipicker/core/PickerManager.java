@@ -12,7 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.OpenableColumns;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 import com.kbeanie.multipicker.api.CacheLocation;
 import com.kbeanie.multipicker.api.exceptions.PickerException;
