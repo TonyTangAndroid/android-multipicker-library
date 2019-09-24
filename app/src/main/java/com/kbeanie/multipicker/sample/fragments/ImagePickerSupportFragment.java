@@ -91,6 +91,7 @@ public class ImagePickerSupportFragment extends Fragment implements ImagePickerC
 
     public void takePicture() {
         cameraPicker = new CameraImagePicker(this);
+        cameraPicker.setImagePickerCallback(this);
         cameraPicker.shouldGenerateMetadata(true);
         cameraPicker.shouldGenerateThumbnails(true);
         pickerPath = cameraPicker.pickImage();
