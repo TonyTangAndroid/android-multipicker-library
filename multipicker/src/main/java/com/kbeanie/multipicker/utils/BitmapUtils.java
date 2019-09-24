@@ -11,31 +11,20 @@ public class BitmapUtils {
             values[1] = originalHeight;
         } else {
             if (originalHeight >= maxHeight && originalWidth <= maxWidth) {
-                int outHeight = maxHeight;
                 float ratio = (float) originalWidth / originalHeight;
-                int outWidth = (int) (ratio * (float) outHeight);
+                int outWidth = (int) (ratio * (float) maxHeight);
                 values[0] = outWidth;
-                values[1] = outHeight;
-            } else if (originalWidth >= maxWidth && originalHeight <= maxHeight) {
-                int outWidth = maxWidth;
+                values[1] = maxHeight;
+            } else if (originalHeight <= maxHeight) {
                 float ratio = (float) originalWidth / originalHeight;
-                int outHeight = (int) ((float) outWidth / ratio);
-                values[0] = outWidth;
+                int outHeight = (int) ((float) maxWidth / ratio);
+                values[0] = maxWidth;
                 values[1] = outHeight;
-            } else if (originalWidth >= maxWidth && originalHeight >= maxHeight) {
-                if (originalHeight > originalHeight) {
-                    int outHeight = maxHeight;
-                    float ratio = (float) originalWidth / originalHeight;
-                    int outWidth = (int) (ratio * (float) outHeight);
-                    values[0] = outWidth;
-                    values[1] = outHeight;
-                } else {
-                    int outWidth = maxWidth;
-                    float ratio = (float) originalWidth / originalHeight;
-                    int outHeight = (int) ((float) outWidth / ratio);
-                    values[0] = outWidth;
-                    values[1] = outHeight;
-                }
+            } else {
+                float ratio = (float) originalWidth / originalHeight;
+                int outHeight = (int) ((float) maxWidth / ratio);
+                values[0] = maxWidth;
+                values[1] = outHeight;
             }
         }
         return values;
