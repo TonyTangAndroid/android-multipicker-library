@@ -1,14 +1,16 @@
 package com.kbeanie.multipicker;
 
+import com.google.common.truth.Truth;
 import com.kbeanie.multipicker.utils.BitmapUtils;
 
-import junit.framework.Assert;
-import junit.framework.TestCase;
+import org.junit.Test;
 
 /**
  * Created by kbibek on 3/18/16.
  */
-public class BitmapUtilsTestCase extends TestCase {
+public class BitmapUtilsTestCase {
+
+    @Test
     public void testGetScaledDimensionsNoScaling() {
         int imageWidth = 100;
         int imageHeight = 200;
@@ -16,11 +18,12 @@ public class BitmapUtilsTestCase extends TestCase {
         int maxHeight = 300;
 
         int[] dimensions = BitmapUtils.getScaledDimensions(imageWidth, imageHeight, maxWidth, maxHeight);
-        Assert.assertNotNull(dimensions);
-        Assert.assertEquals(imageWidth, dimensions[0]);
-        Assert.assertEquals(imageHeight, dimensions[1]);
+        Truth.assertThat(dimensions).isNotNull();
+        Truth.assertThat(dimensions[0]).isEqualTo(imageWidth);
+        Truth.assertThat(dimensions[1]).isEqualTo(imageHeight);
     }
 
+    @Test
     public void testGetScaledDimensionsLargeHeight() {
         int imageWidth = 100;
         int imageHeight = 500;
@@ -28,11 +31,12 @@ public class BitmapUtilsTestCase extends TestCase {
         int maxHeight = 300;
 
         int[] dimensions = BitmapUtils.getScaledDimensions(imageWidth, imageHeight, maxWidth, maxHeight);
-        Assert.assertNotNull(dimensions);
-        Assert.assertEquals((int) (((float) 100 / 500) * 300), dimensions[0]);
-        Assert.assertEquals(maxHeight, dimensions[1]);
+        Truth.assertThat(dimensions).isNotNull();
+        Truth.assertThat(dimensions[0]).isEqualTo((int) (((float) 100 / 500) * 300));
+        Truth.assertThat(dimensions[1]).isEqualTo(maxHeight);
     }
 
+    @Test
     public void testGetScaledDimensionsLargeWidth() {
         int imageWidth = 700;
         int imageHeight = 200;
@@ -40,12 +44,13 @@ public class BitmapUtilsTestCase extends TestCase {
         int maxHeight = 300;
 
         int[] dimensions = BitmapUtils.getScaledDimensions(imageWidth, imageHeight, maxWidth, maxHeight);
-        Assert.assertNotNull(dimensions);
-        Assert.assertEquals(maxWidth, dimensions[0]);
-        Assert.assertEquals((int) (((float) 200 / 700) * 300), dimensions[1]);
+        Truth.assertThat(dimensions).isNotNull();
+        Truth.assertThat(dimensions[0]).isEqualTo(maxWidth);
+        Truth.assertThat(dimensions[1]).isEqualTo((int) (((float) 200 / 700) * 300));
     }
 
 
+    @Test
     public void testGetScaledDimensionsLargeBoth() {
         int imageWidth = 800;
         int imageHeight = 800;
@@ -53,11 +58,12 @@ public class BitmapUtilsTestCase extends TestCase {
         int maxHeight = 300;
 
         int[] dimensions = BitmapUtils.getScaledDimensions(imageWidth, imageHeight, maxWidth, maxHeight);
-        Assert.assertNotNull(dimensions);
-        Assert.assertEquals(300, dimensions[0]);
-        Assert.assertEquals(300, dimensions[1]);
+        Truth.assertThat(dimensions).isNotNull();
+        Truth.assertThat(dimensions[0]).isEqualTo(300);
+        Truth.assertThat(dimensions[1]).isEqualTo(300);
     }
 
+    @Test
     public void testGetScaledDimensionsLargeBoth2() {
         int imageWidth = 800;
         int imageHeight = 1200;
@@ -65,8 +71,8 @@ public class BitmapUtilsTestCase extends TestCase {
         int maxHeight = 300;
 
         int[] dimensions = BitmapUtils.getScaledDimensions(imageWidth, imageHeight, maxWidth, maxHeight);
-        Assert.assertNotNull(dimensions);
-        Assert.assertEquals((int) ((800 / (float) 1200) * 300), dimensions[0]);
-        Assert.assertEquals(300, dimensions[1]);
+        Truth.assertThat(dimensions).isNotNull();
+        Truth.assertThat(dimensions[0]).isEqualTo((int) ((800 / (float) 1200) * 300));
+        Truth.assertThat(dimensions[1]).isEqualTo(300);
     }
 }
